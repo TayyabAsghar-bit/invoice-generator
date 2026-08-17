@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>InvoicePro — Professional Invoice Generator</title>
+    <meta name="description" content="Create, customize, preview, print, and download professional PDF invoices in seconds." />
+    <script>
+      // Safeguard for iframe sandboxes where window.fetch has only a getter
+      (function () {
+        try {
+          var originalFetch = window.fetch;
+          var fetchHolder = originalFetch ? originalFetch.bind(window) : undefined;
+          try {
+            Object.defineProperty(window, 'fetch', {
+              get: function () {
+                return fetchHolder || originalFetch;
+              },
+              set: function (newFetch) {
+                fetchHolder = newFetch;
+              },
+              configurable: true,
+              enumerable: true,
+            });
+          } catch (e1) {
+            try {
+              if (window.Window && Window.prototype) {
+                Object.defineProperty(Window.prototype, 'fetch', {
+                  get: function () {
+                    return fetchHolder || originalFetch;
+                  },
+                  set: function (newFetch) {
+                    fetchHolder = newFetch;
+                  },
+                  configurable: true,
+                  enumerable: true,
+                });
+              }
+            } catch (e2) {}
+          }
+        } catch (err) {
+          // Fail safely
+        }
+      })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-indigo-500 selection:text-white min-h-screen">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
+

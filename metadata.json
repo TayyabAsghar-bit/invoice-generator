@@ -1,0 +1,6 @@
+{
+  "name": "InvoicePro — Invoice Generator",
+  "description": "A modern, professional invoice generator for freelancers, contractors, agencies, and small businesses to create, customize, preview, print, and download PDF invoices.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
